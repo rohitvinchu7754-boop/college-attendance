@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Create Attendance Session - College Attendance System. Generate QR codes for student attendance tracking." />
+  <meta name="theme-color" content="#4f46e5" />
+  <title>Create Attendance | College Attendance System</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body id="attendancePage">
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <div class="sidebar-brand-text">
+        <div class="sidebar-brand-title">Attendance System</div>
+        <div class="sidebar-brand-subtitle">Admin Portal</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav" aria-label="Admin navigation">
+      <span class="sidebar-section-label">Main</span>
+      <a href="dashboard.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+        <span class="sidebar-link-text">Dashboard</span>
+      </a>
+      <a href="attendance.html" class="sidebar-link active" aria-current="page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <span class="sidebar-link-text">Create Attendance</span>
+      </a>
+      <a href="records.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <span class="sidebar-link-text">Attendance Records</span>
+      </a>
+      <span class="sidebar-section-label">Management</span>
+      <a href="students.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="sidebar-link-text">Students</span>
+        <span class="sidebar-badge">248</span>
+      </a>
+      <a href="settings.html" class="sidebar-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="sidebar-link-text">Settings</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-link btn" data-action="logout" style="width:100%; text-align:left; border:none; background:transparent; color:var(--sidebar-text);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:20px;height:20px;opacity:0.8;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span class="sidebar-link-text">Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="topbar" role="banner">
+    <div class="topbar-left">
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="sidebar">
+        <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+      </button>
+      <span class="topbar-title">Create Attendance</span>
+      <span class="topbar-date" id="topbarDate"></span>
+    </div>
+    <div class="topbar-right">
+      <button class="notification-btn" aria-label="View notifications">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="notification-dot"></span>
+      </button>
+      <div class="topbar-divider" aria-hidden="true"></div>
+      <div class="profile-btn" role="button" tabindex="0" aria-label="Admin profile">
+        <div class="profile-avatar" id="profileAvatar" aria-hidden="true">A</div>
+        <div class="profile-info">
+          <p class="profile-name" id="profileName">Admin</p>
+          <p class="profile-role" id="profileRole">Administrator</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content" role="main" aria-labelledby="pageTitle">
+
+    <div class="page-header">
+      <h1 class="page-title" id="pageTitle">Create Attendance</h1>
+      <p class="page-subtitle">Set up a new attendance session for a lecture or lab.</p>
+    </div>
+
+    <!-- Info Alert -->
+    <div class="alert alert-info" role="note" style="margin-bottom: var(--space-6);">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span><strong>Live Attendance Lifecycle Active:</strong> Generating QR publishes Google Form & starts session. Expiring QR automatically unpublishes Google Form via Apps Script API. Replay Protection blocks old QR screenshots.</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-6);">
+
+      <!-- Attendance Form Card -->
+      <section class="card" aria-labelledby="attendanceFormTitle">
+        <div class="card-header">
+          <h2 class="card-title" id="attendanceFormTitle">Session Details</h2>
+          <span class="badge badge-primary">Create Attendance</span>
+        </div>
+
+        <div class="card-body">
+          <form id="attendanceForm" novalidate>
+            <div style="display: grid; gap: var(--space-5);">
+
+              <!-- Subject -->
+              <div class="form-group">
+                <label for="subjectSelect" class="form-label">
+                  Subject <span class="required" aria-hidden="true">*</span>
+                </label>
+                <select id="subjectSelect" name="subject" class="form-select" required aria-required="true">
+                  <option value="">— Select Subject —</option>
+                  <!-- Populated by JS -->
+                </select>
+              </div>
+
+              <!-- Lecture Name -->
+              <div class="form-group">
+                <label for="lectureName" class="form-label">
+                  Lecture / Session Name <span class="required" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="lectureName"
+                  name="lecture"
+                  class="form-input"
+                  placeholder="e.g. Lecture 12 — Sorting Algorithms"
+                  autocomplete="off"
+                  required
+                  aria-required="true"
+                  maxlength="120"
+                />
+                <p class="form-hint">Enter the topic or chapter covered in this session.</p>
+              </div>
+
+              <!-- Automatic Info Row -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+                <div class="form-group">
+                  <label class="form-label">Date & Time</label>
+                  <div class="form-input" style="background: var(--clr-surface-2); display: flex; align-items: center; gap: 8px; color: var(--clr-text-secondary); cursor: not-allowed;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Recorded Automatically (Now)</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">QR Validity Duration</label>
+                  <div class="form-input" style="background: var(--clr-surface-2); display: flex; align-items: center; gap: 8px; color: var(--clr-text-secondary); cursor: not-allowed;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Exactly 20 Seconds</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; padding-top: var(--space-2);">
+                <button type="submit" id="generateQrBtn" class="btn btn-primary btn-lg" style="flex: 1; min-width: 200px;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/>
+                  </svg>
+                  Generate QR Code
+                </button>
+                <button type="button" id="resetFormBtn" class="btn btn-secondary btn-lg">
+                  Reset
+                </button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- QR Code Section -->
+      <section class="card hidden" id="qrSection" aria-labelledby="qrSectionTitle">
+        <div class="card-header">
+          <h2 class="card-title" id="qrSectionTitle">Attendance QR</h2>
+          <span class="badge badge-success" id="qrBadge">Active Session</span>
+        </div>
+        <div class="card-body" style="display: flex; flex-direction: column; gap: var(--space-6); align-items: center;">
+
+          <!-- Countdown Box -->
+          <div class="countdown-box" id="countdownBox">
+            <div class="countdown-number" id="countdownNumber">20</div>
+            <div class="countdown-label" id="countdownLabel">Seconds Remaining</div>
+            <div class="timer-progress-track">
+              <div class="timer-progress-bar" id="timerProgressBar"></div>
+            </div>
+          </div>
+
+          <!-- QR Code Container -->
+          <div class="qr-code-wrapper" id="qrCodeWrapper">
+            <div id="qrcode"></div>
+            <div class="qr-expired-overlay hidden" id="qrExpiredOverlay">
+              <div class="qr-expired-badge" id="qrExpiredBadge">QR EXPIRED</div>
+              <p class="qr-expired-text" id="qrExpiredMessage">This attendance QR is no longer valid.</p>
+            </div>
+          </div>
+
+          <!-- Session Details Summary -->
+          <div style="width: 100%; max-width: 480px; background: var(--clr-bg); border: 1px solid var(--clr-border); border-radius: var(--radius-lg); padding: var(--space-4);" id="qrSessionInfo"></div>
+
+          <!-- QR Actions -->
+          <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; justify-content: center; width: 100%;">
+            <button id="endAttendanceBtn" class="btn btn-danger" style="flex: 1; min-width: 160px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="6" y="6" width="12" height="12" rx="2"/>
+              </svg>
+              End Attendance
+            </button>
+            <button id="generateNewQrBtn" class="btn btn-primary hidden" style="flex: 1; min-width: 160px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+              </svg>
+              Generate New QR
+            </button>
+            <button id="copyLinkBtn" class="btn btn-secondary" style="flex: 1; min-width: 140px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              Copy QR Link
+            </button>
+          </div>
+
+          <div class="alert alert-success" role="note" style="width: 100%;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span><strong>STEP 3A Connected:</strong> QR Code is generated using your official Google Form responder link. Scanning opens the form directly.</span>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- QRCode.js Library (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/attendance.js"></script>
+</body>
+</html>
