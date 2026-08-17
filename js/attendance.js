@@ -81,11 +81,17 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6_E2kZ0s2MWok
 
     // --------------------------------------------------------
     // Helper: Construct Target URL for QR Code (Replay Protection)
-    // Encodes student verification portal link with session ID
+    // Encodes student verification portal link with session ID and parameters
     // --------------------------------------------------------
-    function getTargetUrl(sessionId) {
+    function getTargetUrl(sessionId, subject, lecture, expiresAt, createdAt) {
       const base = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-      return `${base}student.html?sid=${encodeURIComponent(sessionId)}`;
+      const params = new URLSearchParams();
+      params.set('sid', sessionId);
+      if (subject) params.set('sub', subject);
+      if (lecture) params.set('lec', lecture);
+      if (expiresAt) params.set('exp', String(typeof expiresAt === 'number' ? expiresAt : new Date(expiresAt).getTime()));
+      if (createdAt) params.set('iat', String(typeof createdAt === 'number' ? createdAt : new Date(createdAt).getTime()));
+      return `${base}student.html?${params.toString()}`;
     }
 
     // --------------------------------------------------------
@@ -313,7 +319,7 @@ const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6_E2kZ0s2MWok
       const sessionId = generateSessionId();
       const now = new Date();
       const expiresAt = new Date(now.getTime() + (QR_SESSION_DURATION * 1000));
-      const targetUrl = getTargetUrl(sessionId);
+      const targetUrl = getTargetUrl(sessionId, subject, lecture, expiresAt, now);
 
       // 3. Create Session Object
       currentSession = {
